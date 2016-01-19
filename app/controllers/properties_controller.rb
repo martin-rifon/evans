@@ -1,3 +1,5 @@
+require 'elasticsearch'
+
 class PropertiesController < ApplicationController
   def index
     @properties = Property.all
@@ -14,7 +16,28 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
  
     @property.save
+
+    client = Elasticsearch::Client.new log: true
+
+    client.index  index: 'evans', type: 'property', id: @property.id, body: @property.to_json
+
     redirect_to @property
+  end
+
+  def search
+    client = Elasticsearch::Client.new log: true
+
+    @results = client.search index: 'evans', body: { 
+      query: { 
+        multi_match: { 
+          query: params[:title],
+          fields: ['title', 'text']
+        } 
+      } 
+    }
+
+    @result_list = @results['hits']['hits']
+
   end
 end
 

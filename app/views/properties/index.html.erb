@@ -1,7 +1,6 @@
 <h1>Listing properties</h1>
- 
-<%= link_to 'New property', new_property_path %>
 
+<%= link_to 'New property', new_property_path %>
 
 <table>
   <tr>
@@ -13,6 +12,7 @@
     <tr>
       <td><%= property.title %></td>
       <td><%= property.text %></td>
+      <td><%= link_to 'Show', property_path(property) %></td>
     </tr>
   <% end %>
 </table>

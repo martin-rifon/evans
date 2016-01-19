@@ -1,0 +1,16 @@
+<h1>Search results</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @result_list.each do |result| %>
+    <tr>
+      <td><%= result['_source']['title'] %></td>
+      <td><%= result['_source']['text'] %></td>
+      <td><%= link_to 'Show', property_path(result['_source']['id']) %></td>
+    </tr>
+  <% end %>
+</table>
