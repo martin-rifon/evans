@@ -2,7 +2,8 @@ require 'elasticsearch'
 
 class PropertiesController < ApplicationController
   def index
-    @properties = Property.all
+    # @properties = Property.all
+    render :json => Property.all
   end
 
   def show
