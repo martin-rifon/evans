@@ -1,11 +1,11 @@
-/*'use strict';
+'use strict';
 
 angular.module('evansClient')
   .service('propertiesService', propertiesService);
 
-  propertiesService.$inject = ['$http'];
+  propertiesService.$inject = ['$http', 'GET_PROPERTIES_URL'];
 
-  function propertiesService($http) {
+  function propertiesService($http, GET_PROPERTIES_URL) {
     var service = {};
 
     service.getAll = getAll;
@@ -13,6 +13,7 @@ angular.module('evansClient')
     return service;
 
     function getAll() {
-      return $http.get('/properties');
+      var results = $http.get(GET_PROPERTIES_URL)
+      return results;
     }
-  }*/
+  }

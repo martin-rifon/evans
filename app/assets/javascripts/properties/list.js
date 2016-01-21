@@ -1,28 +1,11 @@
 'use strict';
 
 angular.module('evansClient')
-  .service('properties', propertiesService);
-
-  propertiesService.$inject = ['$http'];
-
-  function propertiesService($http) {
-    var service = {};
-
-    service.getAll = getAll;
-
-    return service;
-
-    function getAll() {
-      return $http.get('/properties');
-    }
-  }
-
-angular.module('evansClient')
   .config(configApp);
 
-configApp.$inject = ['$stateProvider', '$urlRouterProvider', 'propertiesService'];
+configApp.$inject = ['$stateProvider', '$urlRouterProvider', 'propertiesServiceProvider', '$stateParamsProvider'];
 
-function configApp($stateProvider, propertiesService) {
+function configApp($stateProvider, $urlRouterProvider, propertiesService, $stateParams) {
   $stateProvider
     .state('properties', {
       url: '/properties',
@@ -30,7 +13,8 @@ function configApp($stateProvider, propertiesService) {
       controller: 'PropertiesCtrl as propertiesVm',
       resolve: {
         propertiesList: ['propertiesService', function(propertiesService) {
-          return propertiesService.getAll();
+            console.log($stateParams);
+            return propertiesService.getAll();
         }]
       }
     });

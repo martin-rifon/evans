@@ -9,7 +9,11 @@ angular.module('evansClient', [
   /*'ui.bootstrap',
   'ngMessages'*/
 ])
-  .config(function($urlRouterProvider, $locationProvider, $httpProvider) {
-    /*$urlRouterProvider
-      .otherwise('/');*/
-  });
+.config(configApp)
+.constant('GET_PROPERTIES_URL', '/properties');
+
+configApp.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider'];
+
+function configApp($urlRouterProvider, $locationProvider, $httpProvider) {
+  $urlRouterProvider.otherwise('/');
+}
