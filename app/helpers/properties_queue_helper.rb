@@ -1,0 +1,2 @@
+module PropertiesQueueHelper
+end
