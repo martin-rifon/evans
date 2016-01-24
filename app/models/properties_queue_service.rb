@@ -21,7 +21,7 @@ class PropertiesQueueService
         property.delete('id')
 
         property['images'] = property['images'].map do |image_base64_string| 
-          Image.new({ :base64_string => image_base64_string})
+          Image.new(image_base64_string)
         end
 
         db_property = Property.find_by tiger_id: property['tiger_id']
