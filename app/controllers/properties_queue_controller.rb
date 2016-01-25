@@ -2,9 +2,9 @@ require "bunny"
 
 class PropertiesQueueController < ApplicationController
   def listen
-  	PropertiesQueueService.instance.listen
+    PropertiesQueueService.instance.listen
 
-  	render layout: 'internal'
+    render layout: 'internal'
   end
 
   def stop

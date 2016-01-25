@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124204800) do
+ActiveRecord::Schema.define(version: 20160125215503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: :cascade do |t|
-    t.text     "base64_string"
     t.integer  "property_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "extension"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "url"
+    t.string   "alt_text"
   end
 
   add_index "images", ["property_id"], name: "index_images_on_property_id", using: :btree

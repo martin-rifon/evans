@@ -3,7 +3,7 @@ require 'singleton'
 class PropertiesQueueService
   include Singleton
 
-  @conn
+  attr_accessor :conn
 
   def listen
     @conn = Bunny.new
@@ -14,19 +14,19 @@ class PropertiesQueueService
     x  = ch.default_exchange
 
     q.subscribe do |delivery_info, metadata, payload|
-      property_array = JSON.parse payload
+      property_array = JSON.parse(payload)
 
       property_array.each do |property|
         property['tiger_id'] = property['id']
         property.delete('id')
 
-        property['images'] = property['images'].map do |image_base64_string| 
-          Image.new(image_base64_string)
+        property['images'] = property['images'].map do |url| 
+          Image.new(url)
         end
 
-        db_property = Property.find_by tiger_id: property['tiger_id']
+        db_property = Property.find_by(tiger_id: property['tiger_id'])
 
-        if (db_property.nil?)
+        if db_property.nil?
           property = Property.new(property)
           property.save
         else
