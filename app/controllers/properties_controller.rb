@@ -2,12 +2,11 @@ require 'elasticsearch'
 
 class PropertiesController < ApplicationController
   def index
-    # @properties = Property.all
-    render :json => Property.all
+    render :json => Property.includes(:images).all, include: :images
   end
 
   def show
-    @property = Property.find(params[:id])
+    @property = Property.includes(:images).find(params[:id])
   end
 
   def new
