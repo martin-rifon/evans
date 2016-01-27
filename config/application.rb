@@ -25,5 +25,8 @@ module Evans
 
     # Autoload services.
     config.autoload_paths << Rails.root.join('lib/services')
+
+    # Autoload workers.
+    config.autoload_paths += %W(#{Rails.root}/app/workers)
   end
 end

@@ -22,6 +22,9 @@ gem 'elasticsearch'
 # Bunny
 gem "bunny"
 
+# Sneakers (run bunny on background)
+gem "sneakers"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

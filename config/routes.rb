@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'properties_queue/listen'
-  get 'properties_queue/stop'
-
   get 'welcome/index'
 
   resources :properties
