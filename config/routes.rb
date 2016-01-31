@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  resources :properties
+  get 'properties/json/:start/:take' => 'properties#get_json'
 
   get 'properties/search/:title' => 'properties#search'
+
+  resources :properties
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

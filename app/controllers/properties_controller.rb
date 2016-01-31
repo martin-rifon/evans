@@ -39,6 +39,11 @@ class PropertiesController < ApplicationController
     @result_list = @results['hits']['hits']
 
   end
+
+  def get_json
+    render :json => Property.includes(:images).limit(params[:take]).offset(params[:start]), include: :images
+  end
+
 end
 
 private
