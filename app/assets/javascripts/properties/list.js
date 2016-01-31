@@ -13,8 +13,7 @@ function configApp($stateProvider, $urlRouterProvider, propertiesService, $state
       controller: 'PropertiesCtrl as propertiesVm',
       resolve: {
         propertiesList: ['propertiesService', function(propertiesService) {
-            console.log($stateParams);
-            return propertiesService.getAll();
+            return propertiesService.getAll(0);
         }]
       }
     });

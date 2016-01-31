@@ -28,5 +28,8 @@ module Evans
 
     # Autoload workers.
     config.autoload_paths += %W(#{Rails.root}/app/workers)
+
+    # Autoload fonts.
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end

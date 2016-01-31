@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125215503) do
+ActiveRecord::Schema.define(version: 20160128012740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160125215503) do
     t.decimal  "m2_not_built"
     t.boolean  "price_includes_shared_expenses"
     t.boolean  "has_garage"
+    t.decimal  "shared_expenses"
   end
 
 end
