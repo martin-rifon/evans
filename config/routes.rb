@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   get 'properties/json/:start/:take' => 'properties#get_json'
+  get 'properties/:id' => 'properties#get_one_json'
 
   get 'properties/search/:title' => 'properties#search'
 

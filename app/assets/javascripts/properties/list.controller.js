@@ -1,18 +1,18 @@
 (function() {
 
-	'use strict';
+  'use strict';
 
-	angular.module('evansClient')
-	  .controller('PropertiesCtrl', PropertiesCtrl);
+  angular.module('evansClient')
+    .controller('PropertiesCtrl', PropertiesCtrl);
 
-	PropertiesCtrl.$inject = [
+  PropertiesCtrl.$inject = [
     '$state', '$http', 'propertiesList', '$stateParams'
   ];
 
-	function PropertiesCtrl($state, $http, propertiesList, $stateParams) {
-	  var vm = this;
+  function PropertiesCtrl($state, $http, propertiesList, $stateParams) {
+    var vm = this;
 
-	  this.propertiesList = propertiesList.data;
-	}
+    vm.propertiesList = propertiesList.data;
+  }
 
 })();
