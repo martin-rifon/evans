@@ -1,4 +1,5 @@
 (function() {
+
   'use strict';
 
   angular.module('evansClient.propertyCard', [])
@@ -6,19 +7,24 @@
 
   function propertyCardDirective() {
 
-    propertyCardDirectiveController.$inject = ['$scope'];
+    propertyCardDirectiveController.$inject = [
+      '$scope'
+    ];
 
     function propertyCardDirectiveController($scope) {
       var vm = this;
 
       if ($scope.property.price_includes_shared_expenses)
         vm.sharedExpensesDisclaimer = 'Incluye ' + 
-          accounting.formatMoney($scope.property.shared_expenses, $scope.property.price_currency + ' ', 0, ".", ",") + 
+          accounting.formatMoney($scope.property.shared_expenses, 
+            $scope.property.price_currency + ' ', 0, ".", ",") + 
           ' de gastos comunes.';
       else
         vm.sharedExpensesDisclaimer = 'No incluye gastos comunes.';
 
-      vm.formattedPrice = accounting.formatMoney($scope.property.price, $scope.property.price_currency + ' ', 0, ".", ",");
+      vm.formattedPrice = accounting.formatMoney($scope.property.price, 
+                                                 $scope.property.price_currency + 
+                                                 ' ', 0, ".", ",");
 
 
     }
@@ -32,8 +38,9 @@
       templateUrl: 'assets/properties/card/property_card.html',
       controller: propertyCardDirectiveController,
       controllerAs: 'propertyCardVm'
-    }
+    };
 
     return directiveConf;
   }
+
 })();

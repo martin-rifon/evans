@@ -1,25 +1,22 @@
-'use strict';
+(function() {
 
-angular.module('evansClient', [
-  /*'gameofnodesClientNewestTryApp.constants',
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',*/
-  'ui.router',
-  'ui.bootstrap',
-  // 'ngMessages',
-  // 'ngAnimate',
-  // 'ngTouch',
-  'evansClient.iscroll',
-  'evansClient.slide',
-  'evansClient.propertyCard'
-])
-.config(configApp)
-.constant('GET_PROPERTIES_URL', '/properties/json')
-.constant('PROPERTIES_PER_LOAD', 12);
+  'use strict';
 
-configApp.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider'];
+  angular.module('evansClient', [
+    'ui.router',
+    'ui.bootstrap',
+    'evansClient.iscroll',
+    'evansClient.slide',
+    'evansClient.propertyCard'
+  ])
+    .config(configApp)
+    .constant('GET_PROPERTIES_URL', '/properties/json')
+    .constant('PROPERTIES_PER_LOAD', 12);
 
-function configApp($urlRouterProvider, $locationProvider, $httpProvider) {
-  $urlRouterProvider.otherwise('/');
-}
+  configApp.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider'];
+
+  function configApp($urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider.otherwise('/');
+  }
+
+})();

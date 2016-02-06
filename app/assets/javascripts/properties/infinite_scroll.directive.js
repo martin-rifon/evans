@@ -1,14 +1,21 @@
 (function() {
+
   'use strict';
 
-  angular.module('evansClient.iscroll', ['evansClient.propertyCard'])
+  angular.module('evansClient.iscroll', [
+    'evansClient.propertyCard'
+  ])
     .directive('iscroll', inifiniteScrollDirective);
 
-    inifiniteScrollDirective.$inject = ['propertiesService', '$timeout'];
+  inifiniteScrollDirective.$inject = [
+    'propertiesService', '$timeout'
+  ];
 
   function inifiniteScrollDirective(propertiesService, $timeout) {
 
-    inifiniteScrollDirectiveController.$inject = ['$scope'];
+    inifiniteScrollDirectiveController.$inject = [
+      '$scope'
+    ];
 
     function inifiniteScrollDirectiveController($scope) {
       var vm = this;
@@ -25,8 +32,8 @@
       controllerAs: 'infiniteScrollVm',
 
       link: function (scope, element, attrs) {
-          var elements = scope.elements
-          ,   timeout = $timeout
+          var elements           = scope.elements
+          ,   timeout            = $timeout
           ,   lastScrollPosition = 0
 
           ,   debounced = function() {
@@ -74,8 +81,9 @@
           // Handler for user scrolling.
           angular.element(document).on('scroll', debounced);
       }
-    }
+    };
 
     return directiveConf;
   }
+
 })();

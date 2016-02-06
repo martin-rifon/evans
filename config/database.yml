@@ -9,7 +9,7 @@ default: &default
   pool: 5
   host: localhost
   username: martin
-  password: 8919
+  password: martin
   timeout: 5000
 
 development:

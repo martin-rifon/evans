@@ -1,4 +1,5 @@
 (function() {
+
   'use strict';
 
   angular.module('evansClient.slide', [])
@@ -12,7 +13,9 @@
       var vm = this;
 
       // Default image.
-      if (($scope.images === undefined) || !Array.isArray || (Array.isArray && $scope.images.length < 1))
+      if (($scope.images === undefined) || 
+          !Array.isArray($scope.images) || 
+          (Array.isArray($scope.images) && $scope.images.length < 1))
       {
         $scope.images = [{ 
           alt_text: 'No se poseen imagenes.',
@@ -22,8 +25,6 @@
       }
       else
         vm.numberOfImages = $scope.images.length;
-
-      console.log($scope.images);
 
       vm.selectedImage  = 0;
       vm.setTime        = 4000; // Interval time.
@@ -41,7 +42,7 @@
       // Pagination dots - gets number of images          
       function dots(num) {
         return new Array(num);   
-      };
+      }
 
       // Pagination - click on dots and change image
       function setSelected(idx) {
@@ -49,28 +50,34 @@
 
         vm.stopSlider();
         vm.selectedImage = idx;
-      };
+      }
 
       // Slideshow controls
       function sliderBack() {
         var vm = this;
 
         vm.stopSlider();
-        vm.selectedImage === 0 ? vm.selectedImage = vm.numberOfImages - 1 : vm.selectedImage--;
-      };
+        if (vm.selectedImage === 0)
+          vm.selectedImage = vm.numberOfImages - 1;
+        else
+          vm.selectedImage--;
+      }
 
       function sliderForward() {
         var vm = this;
 
         vm.stopSlider();
         vm.autoSlider();
-      };
+      }
 
       function autoSlider() {
         var vm = this;
 
-        vm.selectedImage < vm.numberOfImages - 1 ? vm.selectedImage++ : vm.selectedImage = 0;
-      };
+        if (vm.selectedImage < (vm.numberOfImages - 1))
+          vm.selectedImage++;
+        else
+          vm.selectedImage = 0;
+      }
 
       function stopSlider() {
         var vm = this;
@@ -78,7 +85,7 @@
         $interval.cancel(vm.intervalPromise);
         vm.activePause = true;
         vm.activeStart = false;
-      };
+      }
 
       function toggleStartStop() {
         var vm = this;
@@ -88,7 +95,7 @@
         } else {
           vm.startSlider();
         }
-      };
+      }
       
       function startSlider() {
         var vm = this;
@@ -96,7 +103,7 @@
         vm.intervalPromise = $interval(vm.autoSlider, vm.setTime);
         vm.activeStart = true;
         vm.activePause = false;
-      };
+      }
 
       function show(idx) {
         var vm = this;
@@ -104,7 +111,7 @@
         if (vm.selectedImage==idx) {
           return "show";
         }
-      };
+      }
     }
 
     var directiveConf = {
@@ -116,8 +123,9 @@
       templateUrl: 'assets/properties/slide/slide.html',
       controller: slideDirectiveController,
       controllerAs: 'slideVm'
-    }
+    };
 
     return directiveConf;
   }
+
 })();

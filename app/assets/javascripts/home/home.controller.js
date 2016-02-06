@@ -1,17 +1,24 @@
-'use strict';
+(function() {
 
-angular.module('evansClient')
-  .controller('HomeCtrl', HomeCtrl);
+	'use strict';
 
-HomeCtrl.$inject = ['$state', '$http'];
+	angular.module('evansClient')
+	  .controller('HomeCtrl', HomeCtrl);
 
-function HomeCtrl($state, $http) {
-  var vm = this;
+	HomeCtrl.$inject = [
+		'$state',
+    '$http'
+  ];
 
-  vm.searchTerm = "";
-  vm.searchProperties = searchProperties;
+	function HomeCtrl($state, $http) {
+	  var vm = this;
 
-  function searchProperties() {
-  	$state.go('properties', { searchTerm: vm.searchTerm });
-  }
-}
+	  vm.searchTerm       = "";
+	  vm.searchProperties = searchProperties;
+
+	  function searchProperties() {
+	  	$state.go('properties', { searchTerm: vm.searchTerm });
+	  }
+	}
+
+})();

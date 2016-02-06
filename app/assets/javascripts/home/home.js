@@ -1,15 +1,22 @@
-'use strict';
+(function() {
 
-angular.module('evansClient')
-  .config(configApp);
+	'use strict';
 
-configApp.$inject = ['$stateProvider', '$urlRouterProvider'];
+	angular.module('evansClient')
+	  .config(configApp);
 
-function configApp($stateProvider) {
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'assets/home/home.html',
-      controller: 'HomeCtrl as homeVm'
-    });
-}
+	configApp.$inject = [
+    '$stateProvider', 
+    '$urlRouterProvider'
+  ];
+
+	function configApp($stateProvider) {
+	  $stateProvider
+	    .state('home', {
+	      url: '/',
+	      templateUrl: 'assets/home/home.html',
+	      controller: 'HomeCtrl as homeVm'
+	    });
+	}
+
+})();

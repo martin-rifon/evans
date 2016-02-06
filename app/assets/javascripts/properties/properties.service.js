@@ -1,9 +1,13 @@
-'use strict';
+(function() {
 
-angular.module('evansClient')
-  .service('propertiesService', propertiesService);
+  'use strict';
 
-  propertiesService.$inject = ['$http', 'GET_PROPERTIES_URL', 'PROPERTIES_PER_LOAD'];
+  angular.module('evansClient')
+    .service('propertiesService', propertiesService);
+
+  propertiesService.$inject = [
+    '$http', 'GET_PROPERTIES_URL', 'PROPERTIES_PER_LOAD'
+  ];
 
   function propertiesService($http, GET_PROPERTIES_URL, PROPERTIES_PER_LOAD) {
     var service = {};
@@ -13,7 +17,9 @@ angular.module('evansClient')
     return service;
 
     function getAll(propertiesLoaded, successCallback) {
-      var url     = GET_PROPERTIES_URL + '/' + propertiesLoaded + '/' + PROPERTIES_PER_LOAD
+      var url     = GET_PROPERTIES_URL + '/' +
+                    propertiesLoaded + '/' +
+                    PROPERTIES_PER_LOAD
       ,   results = null;
 
       if (typeof successCallback === 'undefined')
@@ -24,3 +30,5 @@ angular.module('evansClient')
       return results;
     }
   }
+
+})();
