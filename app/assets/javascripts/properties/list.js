@@ -15,7 +15,7 @@
       .state('properties', {
         url: '/properties',
         templateUrl: 'assets/properties/list.html',
-        controller: 'PropertiesCtrl as propertiesVm',
+        controller: 'PropertiesCtrl as vm',
         resolve: {
           propertiesList: ['propertiesService', function(propertiesService) {
               return propertiesService.getAll(0);

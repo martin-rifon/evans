@@ -16,6 +16,7 @@
     var service = {};
 
     service.getAll = getAll;
+    service.getOne = getOne;
 
     return service;
 

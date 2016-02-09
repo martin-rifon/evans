@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-10 col-md-offset-1">
+        <h3 class="text-center">{{ vm.propertyData.address }}</h3>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        <slide images="vm.propertyData.images"></slide>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        Ver info de contacto.
+        <div class="col-md-12" ng-show="vm.showContactInfo">
+
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-3">
+          Direccion: {{ vm.propertyData.address }}
+        </div>
+
+        <div class="col-md-3">
+          Barrio: {{ vm.propertyData.neighborhood }}
+        </div>
+
+        <div class="col-md-3">
+          Costo: {{ vm.formattedPrice }}
+          <span ng-if="vm.propertyData.price_includes_shared_expenses">
+            (Incluye {{ vm.formattedSharedExpenses }} de gastos comunes.)
+          </span>
+        </div>
+
+        <div class="col-md-3">
+          Dormitorios: {{ vm.propertyData.bedroom_amount }}
+        </div>
+
+        <div class="col-md-3">
+          Banos: {{ vm.propertyData.bathroom_amount }}
+        </div>
+
+        <div class="col-md-3">
+          Garage: {{ vm.formattedHasGarage }}
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        {{ vm.propertyData.description }}
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        Mapa. <br />
+        {{ vm.propertyData.lat }} <br />
+        {{ vm.propertyData.lon }} <br />
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-3">
+          Piso: {{ vm.propertyData.floor }}
+        </div>
+
+        <div class="col-md-3">
+          Cantidad de pisos: {{ vm.propertyData.floor_amount }}
+        </div>
+
+        <div class="col-md-3">
+          m2 construidos: {{ vm.propertyData.m2_built }}
+        </div>
+
+        <div class="col-md-3">
+          m2 no construidos: {{ vm.propertyData.m2_not_built }}
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        Ver info de contacto.
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
+<a ui-sref="home">Home</a>

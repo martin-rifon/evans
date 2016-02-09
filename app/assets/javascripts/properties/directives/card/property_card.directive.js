@@ -26,7 +26,7 @@
                                                  $scope.property.price_currency + 
                                                  ' ', 0, ".", ",");
 
-
+      vm.linkState = "property({propertyId: '" + $scope.property.id + "'})";
     }
 
     var directiveConf = {
@@ -35,9 +35,9 @@
         property: '='
       },
       replace: true,
-      templateUrl: 'assets/properties/card/property_card.html',
+      templateUrl: 'assets/properties/directives/card/property_card.html',
       controller: propertyCardDirectiveController,
-      controllerAs: 'propertyCardVm'
+      controllerAs: 'vm'
     };
 
     return directiveConf;

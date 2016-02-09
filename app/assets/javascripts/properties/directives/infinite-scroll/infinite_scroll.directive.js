@@ -27,9 +27,9 @@
         elements: '='
       },
       replace: true,
-      templateUrl: 'assets/properties/inifinite_scroll.html',
+      templateUrl: 'assets/properties/directives/infinite-scroll/inifinite_scroll.html',
       controller: inifiniteScrollDirectiveController,
-      controllerAs: 'infiniteScrollVm',
+      controllerAs: 'vm',
 
       link: function (scope, element, attrs) {
           var elements           = scope.elements

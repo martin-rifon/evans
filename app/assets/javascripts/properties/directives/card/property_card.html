@@ -1,13 +1,15 @@
 <div class="col-md-3" style="margin-top: 30px">
   <!-- Four cards can fit per row. -->
   <div class="col-md-12">
-    <span class="text-center">{{ property.address }}</span>
+    <a ui-sref="{{ vm.linkState }}">
+      <span class="text-center">{{ property.address }}</span>
+    </a>
   </div>
   <div class="col-md-12">
-    <slide images="property.images"></slide>
+    <slide images="property.images" linkstate="vm.linkState"></slide>
   </div>
   <div class="col-md-12">
-    <span class="col-md-12 text-center" uib-tooltip="{{ propertyCardVm.sharedExpensesDisclaimer }}">{{ propertyCardVm.formattedPrice }}</span>
+    <span class="col-md-12 text-center" uib-tooltip="{{ vm.sharedExpensesDisclaimer }}">{{ vm.formattedPrice }}</span>
     <span class="col-md-6">Banos: {{ property.bedroom_amount }}</span>
     <span class="col-md-6 text-center"><i class="fa fa-bed" title="Cantidad de camas"></i> {{ property.bathroom_amount }}</span>
   </div>

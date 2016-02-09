@@ -117,12 +117,13 @@
     var directiveConf = {
       restrict: 'E',
       scope: {
-        images: '='
+        images: '=',
+        linkstate: '=?'
       },
       replace: true,
-      templateUrl: 'assets/properties/slide/slide.html',
+      templateUrl: 'assets/properties/directives/slide/slide.html',
       controller: slideDirectiveController,
-      controllerAs: 'slideVm'
+      controllerAs: 'vm'
     };
 
     return directiveConf;
