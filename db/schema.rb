@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128012740) do
+ActiveRecord::Schema.define(version: 20160210011409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20160128012740) do
   add_index "images", ["property_id"], name: "index_images_on_property_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "neighborhood"
     t.string   "address"
     t.string   "description"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160128012740) do
     t.boolean  "price_includes_shared_expenses"
     t.boolean  "has_garage"
     t.decimal  "shared_expenses"
+    t.integer  "contact_info_view_count",        default: 0
   end
 
 end

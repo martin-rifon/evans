@@ -3,7 +3,7 @@
     <!-- Images will render here. -->
     <ul>
       <li ng-repeat="image in images" ng-swipe-right="vm.sliderBack()" ng-swipe-left="vm.sliderForward()">
-        <a ui-sref="{{ linkstate }}" ng-if="linkstate">
+        <a ui-sref="{{ linkstate ? linkstate : 'javascript:void(0);' }}">
           <img data-ng-src="{{ image.url }}" data-ng-alt="{{ image.alt_text }}" ng-class="vm.show($index)"/>
         </a>
       </li>

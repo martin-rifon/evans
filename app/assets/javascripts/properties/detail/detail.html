@@ -8,18 +8,23 @@
     </div>
 
     <div class="col-md-12" style="margin-top: 30px">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-4 col-md-offset-4">
         <slide images="vm.propertyData.images"></slide>
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-md-4"></div>
     </div>
 
     <div class="col-md-12" style="margin-top: 30px">
       <div class="col-md-10 col-md-offset-1">
-        Ver info de contacto.
-        <div class="col-md-12" ng-show="vm.showContactInfo">
+        <a href="javascript:void(0);" 
+          ng-click="vm.displayContactInfo()">
 
-        </div>
+          Ver info de contacto.
+        </a>
+        <contact-info class="col-md-12" 
+          ng-show="vm.showContactInfo"
+          dataobject="vm.propertyData">
+        </contact-info>
       </div>
       <div class="col-md-1"></div>
     </div>
@@ -64,10 +69,13 @@
     </div>
 
     <div class="col-md-12" style="margin-top: 30px">
-      <div class="col-md-10 col-md-offset-1">
-        Mapa. <br />
-        {{ vm.propertyData.lat }} <br />
-        {{ vm.propertyData.lon }} <br />
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <iframe
+          height="100%"
+          width="100%"
+          frameborder="0" style="border:0"
+          src="{{ vm.googleMapsSource }}" allowfullscreen>
+        </iframe>
       </div>
       <div class="col-md-1"></div>
     </div>
@@ -95,14 +103,18 @@
 
     <div class="col-md-12" style="margin-top: 30px">
       <div class="col-md-10 col-md-offset-1">
-        Ver info de contacto.
+        <a href="javascript:void(0);" 
+          ng-click="vm.displayContactInfo()">
+
+          Ver info de contacto.
+        </a>
+        <contact-info class="col-md-12" 
+          ng-show="vm.showContactInfo"
+          dataobject="vm.propertyData">
+        </contact-info>
       </div>
       <div class="col-md-1"></div>
-    </div>
   </div>
 </div>
 
-<br />
-<br />
-
-<a ui-sref="home">Home</a>
+<a ui-sref="properties">Volver</a>

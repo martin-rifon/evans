@@ -7,12 +7,18 @@
     'ui.bootstrap',
     'evansClient.iscroll',
     'evansClient.slide',
-    'evansClient.propertyCard'
+    'evansClient.propertyCard',
+    'evansClient.contactInfo',
+    'angularMoment'
   ])
     .config(configApp)
     .constant('GET_PROPERTIES_URL', '/properties/json')
     .constant('GET_PROPERTY_URL', '/properties')
-    .constant('PROPERTIES_PER_LOAD', 12);
+    .constant('PROPERTIES_PER_LOAD', 12)
+
+    .run(function(amMoment) {
+      amMoment.changeLocale('es');
+    });
 
   configApp.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider'];
 

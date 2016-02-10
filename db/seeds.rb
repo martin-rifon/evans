@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Property.create(
-	  :images         => [
+	:images         => [
                           Image.new(url: "https://facebook.github.io/react/img/logo_og.png", alt_text: "React"),
                           Image.new(url: "https://pbs.twimg.com/profile_images/2149314222/square.png", alt_text: "Angular")
                        ],
@@ -20,6 +20,8 @@ Property.create(
     :contact_from_time => "09:00",
     :contact_to_time   => "18:00",
     :contact_email     => "mrifonelizalde@gmail.com",
+    :contact_from_day  => 0,
+    :contact_to_day    => 4,
 
     :id                             => 5,
     :lat                            => -34.912658,
@@ -33,10 +35,7 @@ Property.create(
     :m2_not_built                   => 10,
     :has_garage                     => true,
     :floor                          => 1,
-    :floor_amount                   => 1,
-
-    :contact_from_day => 0,
-    :contact_to_day   => 4)
+    :floor_amount                   => 1)
 
 Property.create(
     :images         => [],
@@ -50,6 +49,8 @@ Property.create(
     :contact_from_time => "08:00",
     :contact_to_time   => "22:00",
     :contact_email     => "ivane2004@gmail.com",
+    :contact_from_day  => 0,
+    :contact_to_day    => 6,
 
     :id                             => 58,
     :lat                            => -34.909176,
@@ -63,7 +64,4 @@ Property.create(
     :m2_not_built                   => 0,
     :has_garage                     => false,
     :floor                          => 2,
-    :floor_amount                   => 1,
-
-    :contact_from_day => 0,
-    :contact_to_day   => 6)
+    :floor_amount                   => 1)
