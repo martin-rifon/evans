@@ -20,15 +20,17 @@
 
     return service;
 
-    function getAll(propertiesLoaded, successCallback) {
+    function getAll(propertiesLoaded) {
       var url     = GET_PROPERTIES_URL + '/' +
                     propertiesLoaded + '/' +
-                    PROPERTIES_PER_LOAD
-      ,   results = null;
+                    PROPERTIES_PER_LOAD;
+      // ,   results = null;
 
-      results = $http.get(url).then(successCallback);
+      // results = $http.get(url).then(successCallback);
 
-      return results;
+      // return results;
+
+      return $http.get(url);
     }
 
     function getOne(propertyId) {

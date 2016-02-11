@@ -56,21 +56,22 @@
                 if ((totalHeight <= nearBottomValue) && (lastScrollPosition < userScrollPosition))
                 {
                   // Load more properties.
-                  propertiesService.getAll(elements.length, function(response) {
-                    // If we got valid data.
-                    if (response.data.length > 0)
-                    {
-                      // Wait for the current digest loop to finish.
-                      $timeout(function() {
-                        // Let Angular know we are changing model data.
-                        scope.$apply(function () {
-                            // Push the new properties onto the model.
-                            response.data.forEach(function (element, index, array) {
-                              elements.push(element);
-                            });
+                  // propertiesService.getAll(elements.length, function(response) {
+                    propertiesService.getAll(elements.length).then(function(response) {
+                      // If we got valid data.
+                      if (response.data.length > 0)
+                      {
+                        // Wait for the current digest loop to finish.
+                        $timeout(function() {
+                          // Let Angular know we are changing model data.
+                          scope.$apply(function () {
+                              // Push the new properties onto the model.
+                              response.data.forEach(function (element, index, array) {
+                                elements.push(element);
+                              });
+                          });
                         });
-                      });
-                    }
+                      }
                   });
                 }
 
