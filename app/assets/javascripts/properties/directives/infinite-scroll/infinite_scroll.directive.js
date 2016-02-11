@@ -56,7 +56,6 @@
                 if ((totalHeight <= nearBottomValue) && (lastScrollPosition < userScrollPosition))
                 {
                   // Load more properties.
-                  // propertiesService.getAll(elements.length, function(response) {
                     propertiesService.getAll(elements.length).then(function(response) {
                       // If we got valid data.
                       if (response.data.length > 0)

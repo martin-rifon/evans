@@ -24,11 +24,6 @@
       var url     = GET_PROPERTIES_URL + '/' +
                     propertiesLoaded + '/' +
                     PROPERTIES_PER_LOAD;
-      // ,   results = null;
-
-      // results = $http.get(url).then(successCallback);
-
-      // return results;
 
       return $http.get(url);
     }
