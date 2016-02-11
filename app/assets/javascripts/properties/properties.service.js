@@ -26,10 +26,7 @@
                     PROPERTIES_PER_LOAD
       ,   results = null;
 
-      if (typeof successCallback === 'undefined')
-        results = $http.get(url);
-      else
-        results = $http.get(url).then(successCallback);
+      results = $http.get(url).then(successCallback);
 
       return results;
     }
