@@ -16,4 +16,6 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-bootstrap
+//= require moment
+//= require angular-moment
 //= require_tree .

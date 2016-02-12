@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    @property = Property.includes(:images).find(params[:id])
+    render :json => Property.includes(:images).find(params[:id]), include: :images
   end
 
   def new
@@ -42,6 +42,10 @@ class PropertiesController < ApplicationController
 
   def get_json
     render :json => Property.includes(:images).limit(params[:take]).offset(params[:start]), include: :images
+  end
+
+  def get_one_json
+    render :json => Property.includes(:images).find(params[:id]), include: :images
   end
 
 end
