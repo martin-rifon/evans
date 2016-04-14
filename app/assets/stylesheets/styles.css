@@ -37,6 +37,10 @@ html, body {
   background-color: #4a90e2;
 }
 
+.holds-the-iframe {
+  background: url('/assets/spinner.gif') center center no-repeat;
+}
+
 .data-grid-hr {
   margin-top: 10px;
   margin-bottom: 10px;

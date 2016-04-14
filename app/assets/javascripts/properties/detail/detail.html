@@ -6,19 +6,34 @@
 
     <!-- tabs -->
     <div class="col-md-2 col-md-offset-5 col-md-offset-right-5 btn-group" style="margin-top: 30px">
-      <button type="button" class="btn btn-primary" ng-click="vm.active = 0">Modelo 3D</button>
-      <button type="button" class="btn btn-secondary" ng-click="vm.active = 1">Imagenes</button>
+      <button
+        type="button"
+        class="btn"
+        ng-class="{ 'btn-primary': vm.active == 0, 'btn-secondary': vm.active != 0 }"
+        ng-click="vm.active = 0"
+        ng-show="vm.validModelURL">
+
+        Modelo 3D
+      </button>
+      <button
+        type="button"
+        class="btn"
+        ng-class="{ 'btn-primary': vm.active == 1, 'btn-secondary': vm.active != 1 }"
+        ng-click="vm.active = 1">
+
+        Imagenes
+      </button>
     </div>
 
     <!-- 3D model -->
     <div 
-      class="col-md-8 col-md-offset-2 col-md-offset-right-2"
+      class="col-md-8 col-md-offset-2 col-md-offset-right-2 holds-the-iframe"
       ng-show="vm.active == 0">
 
       <iframe
         width="100%"
         height="400px"
-        src="https://sketchfab.com/models/805c443cd3d04371972670fbf10b8eaa/embed"
+        src="{{ vm.trustSrc(vm.propertyData.model_URL) }}"
         frameborder="0"
         allowfullscreen
         mozallowfullscreen="true"
@@ -38,28 +53,44 @@
     <!-- icon bar -->
     <div class="row">
 
-      <div class="col-md-2 col-md-offset-1 icon-col">
-        <i class="fa fa-building fa-5x" title="Apartamento" ng-show="vm.propertyData.property_type == 'apartment'"></i></span>
-        <i class="fa fa-home fa-5x" title="Casa" ng-show="vm.propertyData.property_type == 'house'"></i></span>
+      <div class="col-md-2 col-md-offset-1 icon-col" style="height: 100px;">
+        <i
+          class="fa fa-building fa-5x"
+          title="Apartamento"
+          ng-show="vm.propertyData.property_type == 'apartment'"
+          style="line-height: inherit;"></i></span>
+        <i
+          class="fa fa-home fa-5x"
+          title="Casa"
+          ng-show="vm.propertyData.property_type == 'house'"
+          style="line-height: inherit;"></i></span>
       </div>
 
-      <div class="col-md-2 icon-col">
+      <div class="col-md-2 icon-col" style="height: 100px;">
         <span style="font-size: 70px;">{{ vm.propertyData.bathroom_amount }} </span>
         <i class="fa fa-bed fa-5x" title="Cantidad de dormitorios"></i></span>
       </div>
 
-      <div class="col-md-2 icon-col">
+      <div class="col-md-2 icon-col" style="height: 100px;">
         <span style="font-size: 70px;">{{ vm.propertyData.bathroom_amount }} </span>
-        <img src="/assets/shower_symbol.png" height="70px" width="80px">
+        <!-- <img src="/assets/shower_symbol.png" height="70px" width="80px"> -->
+        <img class="fa" src="/assets/bath.svg" alt="Banos" height="70px" width="80px" style="vertical-align: sub;">
       </div>
 
-      <div class="col-md-2 icon-col">
-        <img src="/assets/garage.png" height="70px" width="80px" ng-show="vm.propertyData.has_garage == true">
-        <img src="/assets/no_garage.png" height="70px" width="80px" ng-show="vm.propertyData.has_garage == false">
-      </div>
+      <div
+        class="col-md-2 icon-col"
+        ng-class="{'col-md-offset-right-2': vm.propertyData.has_garage == false}"
+        style="margin-bottom: 30px; height: 100px;">
 
-      <div class="col-md-2 icon-col" style="margin-bottom: 30px">
         <span style="font-size: 50px;">{{ vm.propertyData.m2_built }} m2</span>
+      </div>
+
+      <div class="col-md-2 icon-col" style="height: 100px;">
+        <i
+          class="fa fa-car fa-5x"
+          title="Tiene garage"
+          style="line-height: inherit;"
+          ng-show="vm.propertyData.has_garage == true"></i></span>
       </div>
     </div>
 

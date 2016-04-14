@@ -27,7 +27,15 @@
 
     vm.showContactInfo = false;
 
-    vm.active = 0;
+    vm.validModelURL = (vm.propertyData.model_URL !== null &&
+      typeof vm.propertyData.model_URL != 'undefined' &&
+      vm.propertyData.model_URL != '');
+
+    vm.active = vm.validModelURL ? 0 : 1;
+
+    vm.trustSrc = function(src) {
+      return $sce.trustAsResourceUrl(src);
+    }
 
     // vm.map = { center: { latitude: vm.propertyData.lat, longitude: vm.propertyData.lon }, zoom: 8 };
     uiGmapGoogleMapApi.then(function (maps) {
