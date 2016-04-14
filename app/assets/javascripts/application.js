@@ -22,6 +22,8 @@
 //= require angular-google-maps
 //= require angularjs-slider
 //= require moment
+//= require moment/es
+//= require lodash/dist/lodash
 //= require angular-moment
 //= require event_dispatcher
 //= require detector
