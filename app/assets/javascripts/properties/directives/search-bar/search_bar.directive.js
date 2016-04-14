@@ -48,7 +48,8 @@
     var directiveConf = {
       restrict: 'E',
       scope: {
-        showLogo: '='
+        showLogo: '=',
+        showReturnLink: '='
       },
       replace: true,
       templateUrl: 'assets/properties/directives/search-bar/search_bar.html',

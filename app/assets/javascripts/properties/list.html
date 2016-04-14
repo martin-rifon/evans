@@ -34,10 +34,10 @@
             <ui-select ng-model="vm.listFilters.bathrooms"
               on-select="vm.changeFilter($item, $model)"
               theme="bootstrap"
-              title="Banos">
+              title="Baños">
 
                 <ui-select-match
-                  placeholder="Banos"
+                  placeholder="Baños"
                   class="no-horizontal-borders no-border-radius">{{ $select.selected.name }}</ui-select-match>
                 <ui-select-choices repeat="bathroomFilter in vm.bathroomFilters | filter: $select.search">
                   <div ng-bind-html="bathroomFilter.name | highlight: $select.search"></div>
