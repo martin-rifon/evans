@@ -18,7 +18,7 @@ class PropertiesController < ApplicationController
  
     @property.save
 
-    client = Elasticsearch::Client.new log: true#, url: 'https://5x3q51fa:w1eqasw75bc9qxyy@ash-6669169.us-east-1.bonsai.io'
+    client = Elasticsearch::Client.new log: true, url: 'https://5x3q51fa:w1eqasw75bc9qxyy@ash-6669169.us-east-1.bonsai.io'
 
     client.index  index: 'evans', type: 'property', id: @property.id, body: @property.to_json
 
@@ -26,7 +26,7 @@ class PropertiesController < ApplicationController
   end
 
   def search
-    client = Elasticsearch::Client.new log: true#, url: 'https://5x3q51fa:w1eqasw75bc9qxyy@ash-6669169.us-east-1.bonsai.io'
+    client = Elasticsearch::Client.new log: true, url: 'https://5x3q51fa:w1eqasw75bc9qxyy@ash-6669169.us-east-1.bonsai.io'
     elastic_must_query   = []
     elastic_should_query = []
 
