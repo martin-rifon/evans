@@ -1,0 +1,214 @@
+<div class="container-fluid">
+
+  <search-bar style="margin-top: 25px;" show-logo="true"></search-bar>
+
+  <div class="row">
+
+    <!-- tabs -->
+    <div class="col-md-2 col-md-offset-5 col-md-offset-right-5 btn-group" style="margin-top: 30px">
+      <button type="button" class="btn btn-primary" ng-click="vm.active = 0">Modelo 3D</button>
+      <button type="button" class="btn btn-secondary" ng-click="vm.active = 1">Imagenes</button>
+    </div>
+
+    <!-- 3D model -->
+    <div 
+      class="col-md-8 col-md-offset-2 col-md-offset-right-2"
+      ng-show="vm.active == 0">
+
+      <iframe
+        width="100%"
+        height="400px"
+        src="https://sketchfab.com/models/805c443cd3d04371972670fbf10b8eaa/embed"
+        frameborder="0"
+        allowfullscreen
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        onmousewheel="">
+      </iframe>
+    </div>
+
+    <!-- gallery -->
+    <div
+      class="col-md-8 col-md-offset-2 col-md-offset-right-2"
+      ng-show="vm.active == 1">
+
+      <slide images="vm.propertyData.images" showlink="false"></slide>
+    </div>
+
+    <!-- icon bar -->
+    <div class="row">
+
+      <div class="col-md-2 col-md-offset-1 icon-col">
+        <i class="fa fa-building fa-5x" title="Apartamento" ng-show="vm.propertyData.property_type == 'apartment'"></i></span>
+        <i class="fa fa-home fa-5x" title="Casa" ng-show="vm.propertyData.property_type == 'house'"></i></span>
+      </div>
+
+      <div class="col-md-2 icon-col">
+        <span style="font-size: 70px;">{{ vm.propertyData.bathroom_amount }} </span>
+        <i class="fa fa-bed fa-5x" title="Cantidad de dormitorios"></i></span>
+      </div>
+
+      <div class="col-md-2 icon-col">
+        <span style="font-size: 70px;">{{ vm.propertyData.bathroom_amount }} </span>
+        <img src="/assets/shower_symbol.png" height="70px" width="80px">
+      </div>
+
+      <div class="col-md-2 icon-col">
+        <img src="/assets/garage.png" height="70px" width="80px" ng-show="vm.propertyData.has_garage == true">
+        <img src="/assets/no_garage.png" height="70px" width="80px" ng-show="vm.propertyData.has_garage == false">
+      </div>
+
+      <div class="col-md-2 icon-col" style="margin-bottom: 30px">
+        <span style="font-size: 50px;">{{ vm.propertyData.m2_built }} m2</span>
+      </div>
+    </div>
+
+    <!-- contact info -->
+    <show-hide-contact-info dataobject="vm">
+    </show-hide-contact-info>
+
+    <!-- property description -->
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1">
+        <strong>Descripcion:</strong>
+        <br />
+        <br />
+        <p>{{ vm.propertyData.description }}</p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+    <!-- property data -->
+    <div class="col-md-12" style="margin-top: 30px">
+      <div class="col-md-10 col-md-offset-1 col-md-offset-right-1">
+        <strong>Ficha:</strong>
+
+        <br />
+        <br />
+
+        <!-- neighborhood and cost -->
+        <div class="row">
+
+          <!-- neighborhood -->
+          <div class="col-md-1">
+            Barrio
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.propertyData.neighborhood }}
+          </div>
+
+          <!-- cost -->
+          <div class="col-md-1">
+            Costo
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.formattedPrice }}
+            <span ng-if="vm.propertyData.price_includes_shared_expenses">
+              (Incluye {{ vm.formattedSharedExpenses }} de gastos comunes.)
+            </span>
+          </div>
+        </div>
+
+        <!-- bedrooms and bathrooms -->
+        <div class="row"  style="margin-top: 20px">
+
+          <!-- bedrooms -->
+          <div class="col-md-1">
+            Dormitorios
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.propertyData.bedroom_amount }}
+          </div>
+
+          <!-- bathrooms -->
+          <div class="col-md-1">
+            Banos
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.propertyData.bathroom_amount }}
+          </div>
+        </div>
+
+        <!-- garage and floor amount-->
+        <div class="row"  style="margin-top: 20px">
+
+          <!-- garage -->
+          <div class="col-md-1">
+            Garage
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.formattedHasGarage }}
+          </div>
+
+          <!-- floor amount-->
+          <div class="col-md-1">
+            Cantidad de pisos
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.propertyData.floor_amount }}
+          </div>
+        </div>
+
+        <!-- m2 built and not built-->
+        <div class="row"  style="margin-top: 20px">
+
+          <!-- m2 built -->
+          <div class="col-md-1">
+            m2 construidos
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.propertyData.m2_built }}
+          </div>
+
+          <!-- m2 not built -->
+          <div class="col-md-1">
+            m2 no construidos
+          </div>
+          <div class="col-md-2" class="no-horizontal-margin no-horizontal-padding">
+            <hr class="data-grid-hr" />
+          </div>
+          <div class="col-md-3">
+            {{ vm.propertyData.m2_not_built }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- map -->
+    <div class="col-md-10 col-md-offset-1 col-md-offset-right-1" style="margin-top: 30px">
+        <ui-gmap-google-map
+          center='vm.map.center'
+          zoom='vm.map.zoom'>
+
+          <ui-gmap-marker
+            coords="{ latitude: vm.propertyData.lat, longitude: vm.propertyData.lon } "
+            idkey="vm.propertyData.id">
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
+
+    <!-- contact info -->
+    <show-hide-contact-info dataobject="vm">
+    </show-hide-contact-info>
+</div>

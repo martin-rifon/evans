@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title">Aplicar mas filtros</h3>
+</div>
+<div class="modal-body" style="min-height: 60px;">
+    <!-- has garage -->
+    <div class="col-sm-1 col-sm-offset-right-1"><span style="vertical-align: middle;">Garage?</span></div>
+    <div class="form-group col-sm-3 col-sm-offset-right-1 no-horizontal-padding">
+      <ui-select ng-model="vm.moreFilters.garage"
+        theme="bootstrap"
+        title="Garage?">
+
+          <ui-select-match
+            placeholder="Garage?"
+            class="no-horizontal-borders no-border-radius">{{ $select.selected.name }}</ui-select-match>
+          <ui-select-choices repeat="garageFilter in vm.garageFilters | filter: $select.search">
+            <div ng-bind-html="garageFilter.name | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <!-- m2 built -->
+    <div class="col-sm-1 col-sm-offset-right-1"><span style="vertical-align: middle;">m2 construidos</span></div>
+    <div class="form-group col-sm-3 col-sm-offset-right-1 no-horizontal-padding">
+      <ui-select ng-model="vm.moreFilters.m2built"
+        theme="bootstrap"
+        title="m2 construidos">
+
+          <ui-select-match
+            placeholder="m2 construidos"
+            class="no-horizontal-borders no-border-radius">{{ $select.selected.name }}</ui-select-match>
+          <ui-select-choices repeat="m2builtFilter in vm.m2builtFilters | filter: $select.search">
+            <div ng-bind-html="m2builtFilter.name | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancelar</button>
+  <button class="btn btn-primary" type="button" ng-click="vm.ok()">Aplicar filtros</button>
+</div>

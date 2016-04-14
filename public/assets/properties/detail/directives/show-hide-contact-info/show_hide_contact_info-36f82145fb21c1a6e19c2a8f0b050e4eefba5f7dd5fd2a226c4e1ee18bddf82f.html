@@ -1,0 +1,18 @@
+<div class="col-md-12" style="margin-top: 30px">
+  <div class="col-md-10 col-md-offset-1">
+    <strong>Informacion de contacto:</strong>
+    <br />
+    <br />
+    <a href="javascript:void(0);" 
+      ng-click="vm.dataobject.displayContactInfo()"
+      ng-show="!vm.dataobject.showContactInfo">
+
+      Mostrar
+    </a>
+    <contact-info class="col-md-12" 
+      ng-show="vm.dataobject.showContactInfo"
+      dataobject="vm.dataobject.propertyData">
+    </contact-info>
+  </div>
+  <div class="col-md-1"></div>
+</div>

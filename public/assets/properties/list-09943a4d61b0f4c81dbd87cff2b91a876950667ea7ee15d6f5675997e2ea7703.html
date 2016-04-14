@@ -1,0 +1,128 @@
+<div class="container-fluid">
+
+  <search-bar style="margin-top: 25px;" show-logo="true"></search-bar>
+
+  <div class="row" style="margin-top: 25px;">
+    <div class="col-xs-6">
+      <div class="row">
+        <!-- separator line -->
+        <div class="col-xs-12">
+          <hr>
+        </div>
+
+        <div class="col-xs-12 list-control-label">
+          <div class="col-sm-1 col-sm-offset-right-1"><span style="vertical-align: middle;">Cantidad</span></div>
+
+          <!-- bedrooms -->
+          <div class="form-group col-sm-4 col-sm-offset-right-1 no-horizontal-padding">
+            <ui-select ng-model="vm.listFilters.bedrooms"
+              on-select="vm.changeFilter($item, $model)"
+              theme="bootstrap"
+              title="Dormitorios">
+
+                <ui-select-match
+                  placeholder="Dormitorios"
+                  class="no-horizontal-borders no-border-radius">{{ $select.selected.name }}</ui-select-match>
+                <ui-select-choices repeat="bedroomFilter in vm.bedroomFilters | filter: $select.search">
+                  <div ng-bind-html="bedroomFilter.name | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+          </div>
+
+          <!-- bathrooms -->
+          <div class="form-group col-sm-4 col-sm-offset-right-1 no-horizontal-padding">
+            <ui-select ng-model="vm.listFilters.bathrooms"
+              on-select="vm.changeFilter($item, $model)"
+              theme="bootstrap"
+              title="Banos">
+
+                <ui-select-match
+                  placeholder="Banos"
+                  class="no-horizontal-borders no-border-radius">{{ $select.selected.name }}</ui-select-match>
+                <ui-select-choices repeat="bathroomFilter in vm.bathroomFilters | filter: $select.search">
+                  <div ng-bind-html="bathroomFilter.name | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+          </div>
+        </div>
+
+        <!-- separator line -->
+        <div class="col-xs-12">
+          <hr>
+        </div>
+
+        <!-- price filter -->
+        <div class="col-xs-12 list-control-label">
+          <div class="col-sm-1 col-sm-offset-right-1"><span style="vertical-align: middle;">Rango de precio</span></div>
+
+          <!-- price currency -->
+          <div class="form-group col-sm-2 no-horizontal-padding">
+            <ui-select ng-model="vm.listFilters.price_currency"
+              on-select="vm.changeFilter($item, $model)"
+              theme="bootstrap"
+              title="Moneda">
+
+              <ui-select-match
+                placeholder="Moneda"
+                class="no-horizontal-borders no-border-radius">{{ $select.selected.name }}</ui-select-match>
+              <ui-select-choices repeat="currency in vm.currencies | filter: $select.search">
+                <div ng-bind-html="currency.name | highlight: $select.search"></div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+
+          <div class="col-sm-8">
+            <rzslider
+              rz-slider-model="vm.listFilters.price_from"
+              rz-slider-high="vm.listFilters.price_end"
+              rz-slider-options="vm.price_slider_options">
+            </rzslider>
+          </div>
+        </div>
+
+        <!-- sorting and more filters -->
+        <div class="col-xs-12 filter-sort-div">
+
+          <!-- more filters -->
+          <div class="col-xs-3">
+            <button class="more-filters-button btn-lg" type="button" ng-click="vm.openMoreFiltersModal()">Mas filtros</button>
+          </div>
+
+          <!-- sorting -->
+          <div class="col-xs-4">
+            <ui-select ng-model="vm.listFilters.sorting"
+              on-select="vm.changeFilter($item, $model)"
+              theme="bootstrap"
+              title="Ordenar por"
+              style="margin: 10px; color: #efefef;">
+
+              <ui-select-match
+                placeholder="Menor precio"
+                class="no-horizontal-borders no-border-radius"
+                style="color: #efefef;">{{ $select.selected.name }}</ui-select-match>
+              <ui-select-choices repeat="sorting in vm.sortings | filter: $select.search">
+                <div ng-bind-html="sorting.name | highlight: $select.search" style="background-color: #efefef;"></div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+
+      </div>
+      <iscroll elements="vm.propertiesList" filter-data="vm.searchData"></iscroll>
+    </div>
+    <div class="col-xs-6">
+      <ui-gmap-google-map
+        center='vm.map.center'
+        zoom='vm.map.zoom'>
+
+        <div ng-repeat="property in vm.propertiesList">
+          <ui-gmap-marker
+            coords="{ latitude: property.lat, longitude: property.lon } "
+            idkey="property.id">
+          </ui-gmap-marker>
+        </div>
+      </ui-gmap-google-map>
+    </div>
+  </div>
+
+</div>
