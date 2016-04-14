@@ -13,12 +13,15 @@
   function configApp($stateProvider, $urlRouterProvider, propertiesService, $stateParams) {
     $stateProvider
       .state('properties', {
-        url: '/properties',
+        url: '/properties/:query/:operation/:property_type',
+        params: {
+            'neighborhoods': []
+        },
         templateUrl: 'assets/properties/list.html',
         controller: 'PropertiesCtrl as vm',
         resolve: {
-          propertiesList: ['propertiesService', function(propertiesService) {
-              return propertiesService.getAll(0);
+          propertiesList: ['propertiesService', '$stateParams', function(propertiesService, $stateParams) {
+              return propertiesService.getAllWithQuery(true);
           }]
         }
       });

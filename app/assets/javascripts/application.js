@@ -15,7 +15,15 @@
 //= require turbolinks
 //= require angular
 //= require angular-ui-router
+//= require angular-ui-select
 //= require angular-bootstrap
+//= require angular-sanitize
+//= require angular-simple-logger
+//= require angular-google-maps
+//= require angularjs-slider
 //= require moment
 //= require angular-moment
+//= require event_dispatcher
+//= require detector
+//= require three
 //= require_tree .

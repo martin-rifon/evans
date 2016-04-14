@@ -1,4 +1,5 @@
 require 'yaml'
+require 'elasticsearch'
 
 class PropertiesQueueWorker
   include Sneakers::Worker
@@ -20,6 +21,10 @@ class PropertiesQueueWorker
 
       db_property = Property.find_or_create_by(tiger_id: property['tiger_id'])
       db_property.update_attributes(property)
+
+      property['id'] = db_property['id']
+      client = Elasticsearch::Client.new log: true
+      client.index  index: 'evans', type: 'property', id: property['id'], body: property.to_json
     end
 
     ack!

@@ -7,10 +7,10 @@
 
   PropertyDetailsCtrl.$inject = [
     '$state', '$http', 'propertyData', '$stateParams', '$timeout', '$scope',
-    '$sce'
+    '$sce', 'viewerService', 'uiGmapGoogleMapApi'
   ];
 
-  function PropertyDetailsCtrl($state, $http, propertyData, $stateParams, $timeout, $scope, $sce) {
+  function PropertyDetailsCtrl($state, $http, propertyData, $stateParams, $timeout, $scope, $sce, viewerService, uiGmapGoogleMapApi) {
     var vm = this;
 
     vm.propertyData = propertyData.data;
@@ -27,10 +27,25 @@
 
     vm.showContactInfo = false;
 
-    vm.googleMapsSource = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/view?key=AIzaSyAWFlnHi7J2jtUW1nKXPWGt8bCx_l7bGIA&center=" + 
-      vm.propertyData.lat + "," + vm.propertyData.lon + "&zoom=18");
+    vm.active = 0;
+
+    // vm.map = { center: { latitude: vm.propertyData.lat, longitude: vm.propertyData.lon }, zoom: 8 };
+    uiGmapGoogleMapApi.then(function (maps) {
+            vm.map = {
+              center: {
+                latitude: vm.propertyData.lat,
+                longitude: vm.propertyData.lon
+              },
+              zoom: 18
+            };
+        })
+
+    // vm.googleMapsSource = $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/view?key=AIzaSyAWFlnHi7J2jtUW1nKXPWGt8bCx_l7bGIA&center=" + 
+    //   vm.propertyData.lat + "," + vm.propertyData.lon + "&zoom=18");
 
     vm.displayContactInfo = displayContactInfo;
+
+    vm.load3DModel = load3DModel;
 
     function displayContactInfo()
     {
@@ -41,6 +56,12 @@
           vm.showContactInfo = true;
         });
       });
+    }
+
+    function load3DModel()
+    {
+      console.log(vm.propertyData);
+      viewerService.loadModel('assets/M1.ply');
     }
   }
 

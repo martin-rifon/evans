@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Evans</title>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'font-awesome', media: 'all', 'data-turbolinks-track' => true %>
-  
-  <script src="/assets/moment/es.js" data-turbolinks-track="true"></script>
+<html lang="es" ng-app="evansClient">
+  <head>
+    <title>Evans</title>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'font-awesome', media: 'all', 'data-turbolinks-track' => true %>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/assets/moment/es.js" data-turbolinks-track="true"></script>
+    <script src="/assets/lodash/lodash.js" data-turbolinks-track="true"></script>
 
-  <%= csrf_meta_tags %>
-</head>
-<body ng-app="evansClient">
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="{{ bodyClass }}">
 
-  <div ui-view=''></div>
+    <div ui-view=''></div>
 
-</body>
+  </body>
 </html>

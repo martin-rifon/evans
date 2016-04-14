@@ -1,17 +1,14 @@
-<div class="container">
-  <div class="row">
-    <h1 class="text-center">Search</h1>
+<section class='home'>
+	<div class="container-fluid">
+	  
+	  <div class="row">
+	    <div class="col-xs-10 col-xs-offset-2 home-title"><img src="/assets/logo.png" alt="InRoom" /></div>
+	  </div>
 
-    <form name="searchPropertiesForm" ng-submit="homeVm.searchProperties()" novalidate>
+	  <div class="row" style="margin-top: 50px;">
+	    <h1 class="text-center home-title">Encontra el hogar de tus suenos</h1>
+	  </div>
 
-      <div class="form-group">
-        <label for="player1Name">Buscar propiedades:</label>
-        <input class="form-control" name="searchTerm" placeholder="Tipo de propiedad, barrio, cantidad de dormitorios, etc." 
-          ng-model="homeVm.searchTerm">
-      </div>
-
-      <button type="submit" class="btn btn-default center-block">Buscar</button>
-
-    </form>
-  </div>
-</div>
+	  <search-bar style="margin-top: 150px;"></search-bar>
+	</div>
+</section>

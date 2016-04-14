@@ -1,0 +1,113 @@
+/* Home */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.home-title {
+  font-family: Lato-Bold;
+  font-size: 72px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home {
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/montevideo.jpg');
+  background-repeat: no-repeat;
+}
+
+/* Search */
+.search-bar {
+    background-color: #ffffff;
+}
+.search-bar-text {
+  color: #8e8e8e !important;
+}
+.search-button {
+  background-color: #3d97ff;
+  font-family: Lato-Bold;
+	font-size: 16px;
+	color: #ffffff;
+}
+
+/* Detail */
+.icon-col {
+  background-color: #4a90e2;
+}
+
+.data-grid-hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: 20px;
+}
+
+
+.left-border-radius {
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.right-border-radius {
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.no-horizontal-borders {
+  border-top-width:0px;
+  border-bottom-width:0px;
+}
+
+.no-horizontal-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.no-horizontal-margin {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.borderless {
+  border: 0px;
+}
+
+.no-border-radius {
+  border-radius: 0 !important;
+}
+
+.col-sm-offset-right-1 {
+  margin-right: 8.33333333%;
+}
+
+.col-md-offset-right-4 {
+  margin-right: 33.33333333%;
+}
+
+.angular-google-map,
+.angular-google-map-container {
+  height: 75vh;
+}
+
+.list-control-label {
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #676767;
+}
+
+.filter-sort-div {
+  background-color: #e5e5e5;
+  margin-top: 20px;
+}
+
+.more-filters-button,
+.sort-button {
+  border-radius: 4px;
+  background-color: #efefef;
+  border: solid 1px #979797;
+  font-family: Helvetica;
+  font-size: 11px;
+  color: #676767;
+  margin: 10px;
+}

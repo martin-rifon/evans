@@ -1,12 +1,12 @@
-<div class="col-md-3" style="margin-top: 30px">
-  <!-- Four cards can fit per row. -->
+<div class="col-md-6" style="margin-top: 30px">
+  <!-- Two cards can fit per row. -->
   <div class="col-md-12">
     <a ui-sref="{{ vm.linkState }}">
       <span class="text-center">{{ property.address }}</span>
     </a>
   </div>
   <div class="col-md-12">
-    <slide images="property.images" linkstate="vm.linkState"></slide>
+    <slide images="property.images" showlink="true"></slide>
   </div>
   <div class="col-md-12">
     <span class="col-md-12 text-center" uib-tooltip="{{ vm.sharedExpensesDisclaimer }}">{{ vm.formattedPrice }}</span>

@@ -31,5 +31,7 @@ module Evans
 
     # Autoload fonts.
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
   end
 end

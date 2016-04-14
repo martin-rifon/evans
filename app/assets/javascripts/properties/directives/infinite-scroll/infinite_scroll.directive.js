@@ -24,7 +24,8 @@
     var directiveConf = {
       restrict: 'E',
       scope: {
-        elements: '='
+        elements: '=',
+        filterData: '='
       },
       replace: true,
       templateUrl: 'assets/properties/directives/infinite-scroll/inifinite_scroll.html',
@@ -33,6 +34,7 @@
 
       link: function (scope, element, attrs) {
           var elements           = scope.elements
+          ,   filterData         = scope.filterData
           ,   timeout            = $timeout
           ,   lastScrollPosition = 0
 
@@ -56,9 +58,11 @@
                 if ((totalHeight <= nearBottomValue) && (lastScrollPosition < userScrollPosition))
                 {
                   // Load more properties.
-                    propertiesService.getAll(elements.length).then(function(response) {
+                  propertiesService
+                    .getAllWithQuery()
+                    .then(function(response) {
                       // If we got valid data.
-                      if (response.data.length > 0)
+                      if (response && (response.data.length > 0))
                       {
                         // Wait for the current digest loop to finish.
                         $timeout(function() {

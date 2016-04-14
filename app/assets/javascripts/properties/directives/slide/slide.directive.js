@@ -7,9 +7,9 @@
 
   function slideDirective() {
 
-    slideDirectiveController.$inject = ['$interval', '$scope'];
+    slideDirectiveController.$inject = ['$interval', '$scope', '$state'];
 
-    function slideDirectiveController($interval, $scope) {
+    function slideDirectiveController($interval, $scope, $state) {
       var vm = this;
 
       // Default image.
@@ -118,7 +118,8 @@
       restrict: 'E',
       scope: {
         images: '=',
-        linkstate: '=?'
+        linkstate: '=?',
+        showlink: '='
       },
       replace: true,
       templateUrl: 'assets/properties/directives/slide/slide.html',
