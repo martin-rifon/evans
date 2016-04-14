@@ -36,6 +36,43 @@ development:
   # Must we acknowledge?
   ack: true
 
+test:
+  # Name of the queue
+  queue_name: evans.properties_queue
+  # Keep a good connection with broker
+  heartbeat: 2
+  # AMQP exchange 
+  amqp: "amqp://guest:guest@localhost:5672"
+  vhost: "/"
+  exchange: "sneakers"
+  exchange_type: "direct"
+  #
+  #
+  # A metrics provider implementation
+  # metrics: nil
+  # Send to background
+  daemonize: true
+  # When workers do frenzy-die, randomize to avoid resource starvation
+  start_worker_delay: 0.2
+  # Number of per-cpu processes to run
+  workers: 4
+  # Log file
+  log: sneakers.log
+  # Pid file
+  pid_path: sneakers.pid
+  #
+  #
+  # Maximum seconds to wait for job
+  timeout_job_after: 5
+  # Grab 10 jobs together. Better speed.
+  prefetch: 10
+  # Threadpool size (good to match prefetch)
+  threads: 10
+  # Is queue durable? (Survives RabbitMQ quit or crash)
+  durable: true
+  # Must we acknowledge?
+  ack: true
+
 production:
   queue_name: evans.properties_queue
   heartbeat: 2
