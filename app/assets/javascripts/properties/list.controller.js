@@ -54,7 +54,7 @@
 
     vm.price_slider_options = {
       floor: 10000,
-      ceil: 100000,
+      ceil: 1000000,
       step: 500,
       minRange: 1,
       translate: function(value) {
